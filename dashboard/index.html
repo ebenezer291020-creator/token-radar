@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>Token Launch Radar</h1>
+    <p class="tagline" id="tagline"></p>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab active" data-tab="board">Board</button>
+  <button class="tab" data-tab="method">Method</button>
+  <button class="tab" data-tab="market">Live market</button>
+</nav>
+
+<main>
+  <section id="view-board">
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search name, slug or chain" aria-label="Search">
+      <select id="f-category" aria-label="Category"><option value="">All categories</option></select>
+      <select id="f-chain" aria-label="Chain"><option value="">All chains</option></select>
+      <label class="toggle"><input type="checkbox" id="f-watch"> Watchlist only</label>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="tablewrap">
+      <table id="board">
+        <thead>
+          <tr>
+            <th data-key="rank" class="num">#</th>
+            <th data-key="name">Protocol</th>
+            <th data-key="category">Category</th>
+            <th data-key="chains">Chains</th>
+            <th data-key="tvl_usd" class="num">TVL</th>
+            <th data-key="change_7d" class="num">7d</th>
+            <th data-key="age_days" class="num">Age</th>
+            <th data-key="implied_value_usd" class="num">Implied value</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <button id="prev">Prev</button>
+      <span id="pageinfo"></span>
+      <button id="next">Next</button>
+    </div>
+  </section>
+
+  <section id="view-detail" hidden>
+    <button class="back" id="back">&larr; Back to board</button>
+    <div id="detail"></div>
+  </section>
+
+  <section id="view-method" hidden>
+    <div id="method"></div>
+  </section>
+
+  <section id="view-market" hidden>
+    <h2>The comparables: tokens that already trade</h2>
+    <p class="note">These are the live-token protocols whose market cap per dollar of TVL anchors the board's implied values, category by category.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th class="num">#</th><th>Protocol</th><th>Category</th><th class="num">Market cap</th><th class="num">TVL</th><th class="num">Mcap/TVL</th><th class="num">7d</th></tr></thead>
+        <tbody id="livebody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p id="srcline"></p>
+  <p>Implied values are this radar's own model, not a prediction that any token will launch or a price make.fun endorses.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
